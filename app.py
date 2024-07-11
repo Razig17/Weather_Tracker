@@ -46,7 +46,7 @@ def weather():
     weather["day"] = date.strftime("%A")
     session["city"] = city
     forecast = get_forcast(city)
-    return render_template("index2.html", weather=weather, forecast=forecast)
+    return render_template("index.html", weather=weather, forecast=forecast)
 
 
 if __name__ == "__main__":
