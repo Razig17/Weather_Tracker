@@ -13,7 +13,6 @@ api_key = "Your api key"
 app.secret_key = "razig"
 
 
-
 @app.route("/", methods=["POST", "GET"])
 @app.route("/weather", methods=["POST", "GET"])
 def weather():
@@ -48,7 +47,6 @@ def weather():
     session["city"] = city
     forecast = get_forcast(city)
     return render_template("index2.html", weather=weather, forecast=forecast)
-
 
 
 if __name__ == "__main__":
