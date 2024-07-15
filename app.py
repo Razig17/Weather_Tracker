@@ -7,15 +7,19 @@ from flask import Flask, render_template, request, session, url_for
 import requests
 import datetime
 from forcast import get_forcast
+import os
+
 
 app = Flask(__name__)
-api_key = "Your api key"
+
+api_key = os.environ.get('API_KEY')
 app.secret_key = "razig"
 
 
 @app.route("/", methods=["POST", "GET"])
 @app.route("/weather", methods=["POST", "GET"])
 def weather():
+    not_found = False
     if request.method == "GET":
         city = "khartoum"
     else:
@@ -26,6 +30,7 @@ def weather():
         city = session["city"]
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
         response = requests.get(url)
+        not_found = True
 
     data = response.json()
     weather = {}
@@ -46,7 +51,7 @@ def weather():
     weather["day"] = date.strftime("%A")
     session["city"] = city
     forecast = get_forcast(city)
-    return render_template("index.html", weather=weather, forecast=forecast)
+    return render_template("index.html", weather=weather, forecast=forecast, not_found=not_found)
 
 
 if __name__ == "__main__":

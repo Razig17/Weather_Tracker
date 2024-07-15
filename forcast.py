@@ -6,12 +6,13 @@ import requests
 
 import json
 import datetime
+import os
 
 
 def get_forcast(city="khartoum"):
     """Gets 5-day forecast"""
 
-    api_key = "Your api key"
+    api_key = os.environ.get('API_KEY')
     
     url = f"http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
