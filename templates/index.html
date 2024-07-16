@@ -64,7 +64,7 @@
 								<div class="degree">
 									<div class="num">{{ weather.temperature }}<sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<img src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png" alt="" height="100" width="100" >
+										<img src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png" alt="" height="80" width="80" >
 									</div>	
 								</div>
 								<span><img src={{ url_for('static', filename='images/icon1.png') }} height="40" alt="">{{ weather.humidity }}%</span>
@@ -78,7 +78,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[0].icon }}@4x.png" alt="" width=80>
+									<img src="https://openweathermap.org/img/wn/{{ forecast[0].icon }}@4x.png" alt="" width=60>
 								</div>
 								<div class="degree">{{ forecast[0].temp_max }}<sup>o</sup>C</div>
 								<small>{{ forecast[0].temp_min }}<sup>o</sup></small>
@@ -90,7 +90,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[1].icon  }}@4x.png" alt="" width=80>
+									<img src="https://openweathermap.org/img/wn/{{ forecast[1].icon  }}@4x.png" alt="" width=60>
 								</div>
 								<div class="degree">{{ forecast[1].temp_max }}<sup>o</sup>C</div>
 								<small>{{ forecast[1].temp_min }}<sup>o</sup></small>
@@ -102,7 +102,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[2].icon  }}@4x.png" alt="" width=80>
+									<img src="https://openweathermap.org/img/wn/{{ forecast[2].icon  }}@4x.png" alt="" width=60>
 								</div>
 								<div class="degree">{{ forecast[2].temp_max }}<sup>o</sup>C</div>
 								<small>{{ forecast[2].temp_min }}<sup>o</sup></small>
@@ -114,7 +114,7 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[3].icon }}@4x.png" alt="" width=80>
+									<img src="https://openweathermap.org/img/wn/{{ forecast[3].icon }}@4x.png" alt="" width=60>
 								</div>
 								<div class="degree">{{ forecast[3].temp_max }}<sup>o</sup>C</div>
 								<small>{{ forecast[3].temp_min }}<sup>o</sup></small>
@@ -122,11 +122,11 @@
 						</div>
                                                 <div class="forecast">
 							<div class="forecast-header">
-								<div class="day">{{ forecast[4].date }}</div>
+								<div class="day">{{ forecast[3].date }}</div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[4].icon  }}@4x.png" alt="" width=80>
+									<img src="https://openweathermap.org/img/wn/{{ forecast[4].icon  }}@4x.png" alt="" width=60>
 								</div>
 								<div class="degree">{{ forecast[4].temp_max }}<sup>o</sup>C</div>
 								<small>{{ forecast[4].temp_min }}<sup>o</sup></small>
