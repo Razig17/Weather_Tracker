@@ -24,6 +24,7 @@ def get_forcast(city="khartoum"):
     weather = {}
     for day in data["list"]:
         date = datetime.datetime.fromtimestamp(day["dt"]).strftime("%A")
+        print(date, day["dt"])
         if date not in weather:
             weather[date] = {
                 "date": date,
@@ -38,5 +39,8 @@ def get_forcast(city="khartoum"):
     days = []
     for day in weather:
         days.append(weather[day])
-    return (days[1:])
+    if len(days) > 5:
+        return (days[1:])
+    return days
 
+get_forcast()
