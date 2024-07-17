@@ -19,12 +19,10 @@ def get_forcast(city="khartoum"):
     if response.status_code != 200:
         return None
     data=response.json()
-    with open("data2.json", "w") as file:
-        json.dump(data, file)
     weather = {}
     for day in data["list"]:
         date = datetime.datetime.fromtimestamp(day["dt"]).strftime("%A")
-        print(date, day["dt"])
+        
         if date not in weather:
             weather[date] = {
                 "date": date,
