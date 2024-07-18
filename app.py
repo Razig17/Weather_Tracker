@@ -16,9 +16,15 @@ api_key = os.environ.get('API_KEY')
 app.secret_key = "razig"
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
+def landing():
+    """Renders the landing page"""
+    return render_template("index1.html")
+
+
 @app.route("/weather", methods=["POST", "GET"])
 def weather():
+    """Renders the weather page"""
     not_found = False
     if request.method == "GET":
         city = "khartoum"
@@ -55,4 +61,4 @@ def weather():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

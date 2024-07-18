@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>Weather Tracker</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <!-- Loading third party fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700|Open+Sans:300,400,700" rel="stylesheet"
+        type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+    <!-- Loading main css file -->
+    <style>
+        body {
+            background-color: #1e202b;
+            font-family: "Roboto", "Open Sans", sans-serif;
+            color: #bfc1c8;
+        }
+
+        .intro {
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+        }
+
+        .intro h1 {
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            font-size: 1.2em;
+        }
+
+        .intro .btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-content: flex-end;
+            align-items: center;
+            text-align-last: center;
+        }
+
+        .feature-item {
+            text-align: center;
+            width: 30%;
+        }
+
+        .feature-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .about {
+            text-align: center;
+        }
+
+        .about .icons a {
+            margin: 0 10px;
+            color: #bfc1c8;
+        }
+
+        .about .icons a i {
+            font-size: 1.5em;
+        }
+    </style>
+
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="static/style.css">
+
+
+</head>
+<div class="site-content">
+    <div class="site-header">
+        <div class="container">
+            <a class="branding">
+                <img src={{ url_for('static', filename='images/logo.png' ) }} alt="" class="logo">
+                <div class="logo-type">
+                    <h1 class="site-title">Weather Tracker</h1>
+                </div>
+            </a>
+
+            <!-- Default snippet for navigation -->
+            <div class="main-navigation">
+                <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <li class="menu-item current-menu-item"><a href="">Home</a></li>
+                    <li class="menu-item"><a href="#features">Features</a></li>
+                    <li class="menu-item"><a href="#about">About</a></li>
+                    <li class="menu-item"><a href="/weather">Go to App</a></li>
+                </ul> <!-- .menu -->
+            </div> <!-- .main-navigation -->
+
+            <div class="mobile-navigation"></div>
+
+        </div>
+        <div class="intro" id="intro">
+            <h1>Weather Tracker</h1>
+            <p>Your ultimate weather forecasting tool</p>
+            <a href="/weather" class="btn">Go to App</a>
+        </div>
+
+        <div class="feature" id="features">
+            <div class="feature-item">
+                <img src={{ url_for('static', filename='images/accurate.png' ) }} alt="Feature 1">
+                <h3>Real time forecast</h3>
+                <p>Accurate and up-to-date weather forecasts</p>
+            </div>
+            <div class="feature-item">
+                <img src={{ url_for('static', filename='images/5days.png' ) }} alt="Feature 2">
+                <h3>5 days forecast</h3>
+                <p>5-day weather forecast</p>
+            </div>
+            <div class="feature-item">
+                <img src={{ url_for('static', filename='images/easy.png' ) }} alt="Feature 3">
+                <h3>Simple interface</h3>
+                <p>Easy-to-use interface</p>
+            </div>
+        </div>
+
+
+    </div>
+    </body>
+    <footer>
+        <div class="about" id="about">
+            <h2>About Weather Tracker</h2>
+            <p>Weather Tracker was inspired by the need for accurate and accessible weather information. It started as a
+                project for Holberton School and has grown into a comprehensive tool for weather forecasting.</p>
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/abdelrazig-sharif/" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/RAZIG17/Weather_tracker" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/ABDULRAZAG7" target="_blank"><i class="fas fa-x"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+</html>
