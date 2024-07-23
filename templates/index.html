@@ -1,149 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-		
-		<title>Weather Tracker</title>
-                <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
-		<!-- Loading third party fonts -->
-		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
-		
 
-		<!-- Loading main css file -->
-		<link rel="stylesheet" href="static/style.css">
-		
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-	</head>
+    <title>Weather Tracker</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <!-- Loading third party fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
 
-        {% if not_found %}
-                <script>
-                alert("Location not found");
-                </script>
-        {% endif %}
-	<body>
-                
-		
-		<div class="site-content">
-			<div class="site-header">
-				<div class="container">
-					<a class="branding">
-						<img src={{ url_for('static', filename='images/logo.png') }} alt="" class="logo">
-						<div class="logo-type">
-							<h1 class="site-title">Weather Tracker</h1>
-						</div>
-					</a>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
-	
+    <!-- Loading main css file -->
+    <link rel="stylesheet" href="static/style.css">
 
-				</div>
-			</div> <!-- .site-header -->
+    <!-- Loading scrips -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/mobile_menu.js"></script>
 
-			<div class="hero">
-				<div class="container">
-					<form action="/weather" method="post" class="find-location">
-						<input type="text" id="city-input" name="city" required  placeholder="Find your location...">
-						<input type="submit" value="Find">
-                                                
-					</form>
-                                        
+</head>
 
-				</div>
-			</div>
-			<div class="forecast-table">
-				<div class="container">
-					<div class="forecast-container">
-						<div class="today forecast">
-							<div class="forecast-header">
-								<div class="day">{{ weather.day }}</div>
-								<div class="date">{{ weather.date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="location">{{ weather.city }}</div>
-								<div class="degree">
-									<div class="num">{{ weather.temperature }}<sup>o</sup>C</div>
-									<div class="forecast-icon">
-										<img src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png" alt="" height="80" width="80" >
-									</div>	
-								</div>
-								<span><img src={{ url_for('static', filename='images/icon1.png') }} height="40" alt="">{{ weather.humidity }}%</span>
-								<span><img src={{ url_for('static', filename='images/icon-wind.png') }} alt="">{{ weather.wind }} m/s</span>
-								<span><img src={{ url_for('static', filename='images/icon-compass.png') }} alt="">{{ weather.pressure }} hpa</span>
-							</div>
-						</div>
-						<div class="forecast">
-							<div class="forecast-header">
-								<div class="day">{{ forecast[0].date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[0].icon }}@4x.png" alt="" width=60>
-								</div>
-								<div class="degree">{{ forecast[0].temp_max }}<sup>o</sup>C</div>
-								<small>{{ forecast[0].temp_min }}<sup>o</sup></small>
-							</div>
-						</div>
-						<div class="forecast">
-							<div class="forecast-header">
-								<div class="day">{{ forecast[1].date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[1].icon  }}@4x.png" alt="" width=60>
-								</div>
-								<div class="degree">{{ forecast[1].temp_max }}<sup>o</sup>C</div>
-								<small>{{ forecast[1].temp_min }}<sup>o</sup></small>
-							</div>
-						</div>
-						<div class="forecast">
-							<div class="forecast-header">
-								<div class="day">{{ forecast[2].date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[2].icon  }}@4x.png" alt="" width=60>
-								</div>
-								<div class="degree">{{ forecast[2].temp_max }}<sup>o</sup>C</div>
-								<small>{{ forecast[2].temp_min }}<sup>o</sup></small>
-							</div>
-						</div>
-						<div class="forecast">
-							<div class="forecast-header">
-								<div class="day">{{ forecast[3].date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[3].icon }}@4x.png" alt="" width=60>
-								</div>
-								<div class="degree">{{ forecast[3].temp_max }}<sup>o</sup>C</div>
-								<small>{{ forecast[3].temp_min }}<sup>o</sup></small>
-							</div>
-						</div>
-                                                <div class="forecast">
-							<div class="forecast-header">
-								<div class="day">{{ forecast[4].date }}</div>
-							</div> <!-- .forecast-header -->
-							<div class="forecast-content">
-								<div class="forecast-icon">
-									<img src="https://openweathermap.org/img/wn/{{ forecast[4].icon  }}@4x.png" alt="" width=60>
-								</div>
-								<div class="degree">{{ forecast[4].temp_max }}<sup>o</sup>C</div>
-								<small>{{ forecast[4].temp_min }}<sup>o</sup></small>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-			<main class="main-content">
+{% if not_found %}
+<script>
+    alert("Location not found");
+</script>
+{% endif %}
 
-			</main> <!-- .main-content -->
+<body>
 
-			<footer class="site-footer">
-			</footer> <!-- .site-footer -->
-		</div>
-		
-	</body>
+
+    <div class="site-content">
+        <div class="site-header">
+            <div class="container">
+                <a class="branding">
+                    <img src={{ url_for('static', filename='images/logo.png' ) }} alt="" class="logo">
+                    <div class="logo-type">
+                        <h1 class="site-title">Weather Tracker</h1>
+                    </div>
+                </a>
+                <!-- Default snippet for navigation -->
+                <div class="main-navigation">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a href="/">Home</a></li>
+                        <li class="menu-item"><a href="/#features">Features</a></li>
+                        <li class="menu-item"><a href="/#about">About</a></li>
+                        <li class="menu-item"><a href="/weather">Go to App</a></li>
+                    </ul> <!-- .menu -->
+                </div> <!-- .main-navigation -->
+
+                <div class="mobile-navigation"></div>
+
+            </div>
+        </div> <!-- .site-header -->
+
+        <div class="hero">
+            <div class="container">
+                <form action="/weather" method="post" class="find-location">
+                    <input type="text" id="city-input" name="city" required placeholder="Find your location...">
+                    <input type="submit" value="Find">
+
+                </form>
+
+
+            </div>
+        </div>
+        <div class="forecast-table">
+            <div class="container">
+                <div class="forecast-container">
+                    <div class="today forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ weather.day }}</div>
+                            <div class="date">{{ weather.date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="location">{{ weather.city }}</div>
+                            <div class="degree">
+                                <div class="num">{{ weather.temperature }}<sup>o</sup>C</div>
+                                <div class="forecast-icon">
+                                    <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@4x.png" alt=""
+                                        height="80" width="80">
+                                </div>
+                            </div>
+                            <span><img src={{ url_for('static', filename='images/icon1.png' ) }} height="40" alt="">{{
+                                weather.humidity }}%</span>
+                            <span><img src={{ url_for('static', filename='images/icon-wind.png' ) }} alt="">{{
+                                weather.wind }} m/s</span>
+                            <span><img src={{ url_for('static', filename='images/icon-compass.png' ) }} alt="">{{
+                                weather.pressure }} hpa</span>
+                        </div>
+                    </div>
+                    <div class="forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ forecast[0].date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="forecast-icon">
+                                <img src="https://openweathermap.org/img/wn/{{ forecast[0].icon }}@4x.png" alt=""
+                                    width=60>
+                            </div>
+                            <div class="degree">{{ forecast[0].temp_max }}<sup>o</sup>C</div>
+                            <small>{{ forecast[0].temp_min }}<sup>o</sup></small>
+                        </div>
+                    </div>
+                    <div class="forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ forecast[1].date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="forecast-icon">
+                                <img src="https://openweathermap.org/img/wn/{{ forecast[1].icon  }}@4x.png" alt=""
+                                    width=60>
+                            </div>
+                            <div class="degree">{{ forecast[1].temp_max }}<sup>o</sup>C</div>
+                            <small>{{ forecast[1].temp_min }}<sup>o</sup></small>
+                        </div>
+                    </div>
+                    <div class="forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ forecast[2].date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="forecast-icon">
+                                <img src="https://openweathermap.org/img/wn/{{ forecast[2].icon  }}@4x.png" alt=""
+                                    width=60>
+                            </div>
+                            <div class="degree">{{ forecast[2].temp_max }}<sup>o</sup>C</div>
+                            <small>{{ forecast[2].temp_min }}<sup>o</sup></small>
+                        </div>
+                    </div>
+                    <div class="forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ forecast[3].date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="forecast-icon">
+                                <img src="https://openweathermap.org/img/wn/{{ forecast[3].icon }}@4x.png" alt=""
+                                    width=60>
+                            </div>
+                            <div class="degree">{{ forecast[3].temp_max }}<sup>o</sup>C</div>
+                            <small>{{ forecast[3].temp_min }}<sup>o</sup></small>
+                        </div>
+                    </div>
+                    <div class="forecast">
+                        <div class="forecast-header">
+                            <div class="day">{{ forecast[4].date }}</div>
+                        </div> <!-- .forecast-header -->
+                        <div class="forecast-content">
+                            <div class="forecast-icon">
+                                <img src="https://openweathermap.org/img/wn/{{ forecast[4].icon  }}@4x.png" alt=""
+                                    width=60>
+                            </div>
+                            <div class="degree">{{ forecast[4].temp_max }}<sup>o</sup>C</div>
+                            <small>{{ forecast[4].temp_min }}<sup>o</sup></small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <main class="main-content">
+
+        </main> <!-- .main-content -->
+
+        <footer class="site-footer">
+        </footer> <!-- .site-footer -->
+    </div>
+
+
+</body>
 
 </html>
