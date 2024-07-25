@@ -49,7 +49,6 @@ API_KEY=your_openweathermap_api_key
 ```bash
 flask run
 ```
-Here you should say what actually happens when you execute the code above.
 
 ## Usage
 
