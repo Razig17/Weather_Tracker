@@ -47,7 +47,7 @@ API_KEY=your_openweathermap_api_key
 6. Run the application:
 
 ```bash
-flask run
+python3 app.py
 ```
 
 ## Usage
